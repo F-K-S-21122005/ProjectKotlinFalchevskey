@@ -8,9 +8,11 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -39,18 +41,24 @@ fun MainScreen() {
         modifier = Modifier
             .fillMaxSize(),
 
-        topBar = {
-            Search()
-        }
+
 
     ) {
+        Column {
+            Search()
+            Spacer(modifier = Modifier.height(5.dp))
+            LazyColumn(
+                modifier = Modifier
+                    .fillMaxHeight()
+                    .fillMaxWidth()
+            ) {
+                items(9) { i ->
 
-        LazyColumn(
-            modifier = Modifier
-                .fillMaxHeight()
-                .fillMaxWidth()
-        ) {
+                    User()
 
+                }
+
+            }
         }
     }
 }
@@ -63,17 +71,17 @@ private fun Search() {
         modifier = Modifier
             .fillMaxWidth()
             .background(Color.Blue)
-            .padding(20.dp, 20.dp, 20.dp, 30.dp)
+            .padding(25.dp, 15.dp, 25.dp, 15.dp)
     )
-        {
-            Row(
+    {
+        Row(
             modifier = Modifier
-                .width(650.dp)
+                .width(750.dp)
                 .background(
                     Color.Red,
                     shape = RoundedCornerShape(24.dp)
                 )
-                .padding(30.dp, 20.dp, 30.dp, 20.dp),
+                .padding(30.dp, 20.dp, 4.dp, 20.dp),
         ) {
             Text(
                 text = "Search for players",
@@ -88,31 +96,51 @@ private fun Search() {
 @Preview
 @Composable
 private fun User() {
-    Box(modifier = Modifier
-        .fillMaxWidth()
-        .background(Color.Green)
-        ){
-        Row {
-            Image(painter = painterResource(id = R.drawable.monogram),
-                contentDescription = "image",
-                contentScale = ContentScale.Crop,
-                modifier = Modifier
-                    .padding(10.dp, 5.dp, 0.dp, 5.dp)
-                    .size(64.dp)
-            )
-            Column (modifier = Modifier
-                .padding(12.dp, 5.dp, 0.dp, 5.dp))
-            {
-                Text(text = "Nickname",
-                    fontSize = 20.sp,)
+    Column(modifier= Modifier.padding(5.dp)) {
 
-                Text(text = "Subhead",
-                    fontSize = 20.sp,)
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .background(
+                    Color.Green,
+                    shape = RoundedCornerShape(20.dp)
+                )
+        ) {
+            Row()
+            {
+                Image(
+                    painter = painterResource(id = R.drawable.monogram),
+                    contentDescription = "image",
+                    contentScale = ContentScale.Crop,
+                    modifier = Modifier
+                        .padding(10.dp, 5.dp, 0.dp, 5.dp)
+                        .size(64.dp)
+
+                )
+                Column(
+                    modifier = Modifier
+                        .padding(12.dp, 5.dp, 0.dp, 5.dp)
+                )
+                {
+                    Text(
+                        text = "Nickname",
+                        fontSize = 20.sp,
+                    )
+
+                    Text(
+                        text = "Subhead",
+                        fontSize = 20.sp,
+                    )
+                }
             }
         }
+
+
+
     }
 
 }
+
 
 @Preview
 @Composable
