@@ -1,6 +1,0 @@
-com.example.screens.player.impl
-string hero_name
-string losses
-string mmr
-string win_rate
-string wins

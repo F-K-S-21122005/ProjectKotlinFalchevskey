@@ -1,5 +1,0 @@
-int string hero_name 0x0
-int string losses 0x0
-int string mmr 0x0
-int string win_rate 0x0
-int string wins 0x0
