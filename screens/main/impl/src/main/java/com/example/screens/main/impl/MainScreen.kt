@@ -1,11 +1,10 @@
 package com.example.screens.main.impl
 
 import android.annotation.SuppressLint
-import android.util.Log.d
+import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -19,16 +18,14 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -39,12 +36,11 @@ import com.example.impl.R
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun MainScreen() {
-    val f = 8
+    var f = 20
+    val context = LocalContext.current
     Scaffold(
         modifier = Modifier
             .fillMaxSize()
-
-
 
 
     ) {
@@ -100,17 +96,23 @@ private fun Search() {
 @Preview
 @Composable
 private fun User() {
-    Column(modifier= Modifier.padding(5.dp)) {
+    val context = LocalContext.current
+    Column(modifier = Modifier.padding(5.dp)) {
 
         Box(
             modifier = Modifier
-                .clickable ( onClick = { /* TODO() */ } )
+                .clickable(onClick = {
+                    Toast
+                        .makeText(context, "Hello world", Toast.LENGTH_LONG)
+                        .show()
+                })
                 .fillMaxWidth()
                 .background(
                     Color.Green,
-                    shape = RoundedCornerShape(20.dp))
+                    shape = RoundedCornerShape(20.dp)
+                )
         )
-            {
+        {
             Row()
             {
                 Image(
@@ -139,7 +141,6 @@ private fun User() {
                 }
             }
         }
-
 
 
     }
